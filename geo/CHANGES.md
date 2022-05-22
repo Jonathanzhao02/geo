@@ -3,8 +3,17 @@
 
 ## Unreleased
 
-* Speed up intersection checks by using a preliminary bbox check
-* Remove unneeded reference for `*MapCoords*` closure parameter.
+* Flatten algorithm namespace. For example:
+  ```rust
+  # Before
+  use geo::algorithm::area::Area;
+  use geo::algorithm::bounding_rect::BoundingRect;
+  # After
+  use geo::{Area, BoundingRect};
+  ```
+* Speed up `intersects` checks by using a preliminary bbox check
+  * <https://github.com/georust/geo/pull/828>
+* BREAKING: Remove unneeded reference for `*MapCoords*` closure parameter.
   * <https://github.com/georust/geo/pull/810>
 * BREAKING: Bump proj dependency to 0.26 which uses proj lib 9.0
   * <https://github.com/georust/geo/pull/813>
@@ -14,6 +23,9 @@
   - rename MapCoordsInplace::map_coords_inplace -> MapCoordsInPlace::map_coords_in_place
   - rename TryMapCoordsInplace::try_map_coords_inplace -> TryMapCoordsInPlace::try_map_coords_in_place
   - Consolidate traits `TryMapCoords` into `MapCoords` and `TryMapCoordsInplace` into `MapCoordsInPlace`
+* Implement `ChamberlainDuquetteArea` for all geo types.
+  * <https://github.com/georust/geo/pull/833>
+
 ## 0.20.1
 
 * FIX: update to proper minimum geo-types version
